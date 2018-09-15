@@ -1,0 +1,50 @@
+.form-login{
+    padding: 0;
+    width: 100%;
+    max-width: 700px;
+    border: solid 4px rgba(90,105,120,0.3);
+    border-radius: 5px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.form-login form{
+    width: 500px;   
+}
+.form-login form input{
+    margin: 15px 0;
+}
+.form-login label{
+    font-size: 20px;
+    color: #47525E;
+}
+.form-login .form-group,.login-buttons{
+    width: 100%;
+}
+.form-login .btn{
+    margin-left: 0;
+
+}
+.btn-login{
+    background: #0B2F56;
+}
+.login-buttons{
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    
+}
+.login-buttons .btn{
+    width: 240px;
+    height: 40px;
+    font-size: 21px;
+}
+.btn-cadastrar{
+    background-color: #2AA68D;
+    display: block;
+    text-align: center;
+}

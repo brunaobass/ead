@@ -1,0 +1,143 @@
+.tabela-cursos{
+    text-align: center;
+}
+.editar,.excluir{
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    color: #FFF;
+    border-radius: 5px;
+}
+.editar{
+    background-color: #0B2F56;
+}
+.excluir{
+    background-color: #730606;
+}
+.tabela-cursos img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+.btn-add{
+    width: 200px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 40px;
+}
+.cursos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cursoitem{
+    width: 220px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 2px #333 ;
+    margin-right:45px;
+    margin-bottom: 30px;
+}
+.cursoitem img{
+    height: 120px;
+    object-fit: cover;
+}
+.imagem_curso{
+    width: 100%;
+}
+.instrutor,.nome-curso figcaption,.demo{
+    margin: 5px 10px;
+}
+#btn-criar-curso{
+    margin-bottom: 40px;
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    width: 150px;
+    line-height: 30px;
+}
+.pagination{
+    max-width: 700px;
+    width:min-content;
+    list-style: none;
+    border: 2px solid #777;
+    display: flex;
+    border-radius: 5px;
+    margin: 50px auto 0 auto;
+    line-height: 30px;
+}
+.pagination li{
+    width: 30px;
+    
+    text-align: center;
+}
+.pagination a:first-of-type{
+    border-left: none;
+}
+
+.pagination a:hover{
+    color:#FFF;
+}
+.pagination a{
+    color: #777;
+    border-left: 2px solid #777;
+}
+.page-active{
+    background-color: #777;
+}
+.page-active a{
+    color: #FFF;
+}
+.pagination li:hover{
+    background-color: #CCC;
+}
+
+/*********************************************************************************
+***************************************TABLETS************************************
+**********************************************************************************/
+@media(max-width:855px){
+    .cursos-container{
+        margin: auto;
+        width: 530px;
+        
+    }
+}
+/*********************************************************************************
+***************************************TABLETS************************************
+**********************************************************************************/
+
+/*********************************************************************************
+***************************************CELULAR************************************
+**********************************************************************************/
+@media(max-width:550px){
+    
+    .cursoitem{
+        margin-right: 15px;
+    }
+}
+@media(max-width:500px){
+    .cursos-container{
+        width: 100%;
+    }
+    .cursos{
+        flex-direction: column;
+        align-items: center;
+    }
+    .cursoitem{
+        margin-right: 0;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .imagem_curso,.instrutor{
+        text-align: center;
+    }
+    .imagem_curso img{
+        height: 150px;
+    }
+}
+/*********************************************************************************
+***************************************CELULAR************************************
+**********************************************************************************/

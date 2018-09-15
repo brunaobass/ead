@@ -1,0 +1,535 @@
+/*******************
+*****CURSO******
+********************/
+.curso_info{
+    display: flex;
+    width: 100%;
+    background-color: #CCC; 
+    justify-content: flex-start;
+    padding: 10px;
+}
+.curso_info h3{
+    font-size: 2em;
+    margin-left: 20px;
+}
+.curso_info img{
+    width: 100px;
+    height: 60px;
+}
+.curso,.add-curso{
+    display: flex;
+    justify-content: space-between;
+}
+.curso section h3{
+    margin-bottom: 30px;
+    font-size: 22px;
+}
+
+.curso section
+/*******************
+*****GRADE******
+********************/
+.lista-modulos{
+    background-color: #EEEEEE;
+    border: 1px solid #8492A6;
+    padding:10px 30px;
+    box-shadow: 0px 0px 2px 2px #BBB;
+}
+.lista-modulos h4{
+    margin-top: 20px;
+    margin-bottom: 20px !important;
+}
+.aulas{
+    display: flex;
+    width: 100%;  
+}
+.aulas h3{
+    margin-bottom: 20px;
+}
+.aulas ul{
+    list-style: none;
+}
+.curso_left,
+.curso_right{
+    min-height: 300px;
+}
+.curso_left{
+    flex: 1;   
+}
+.curso_right{
+    flex: 2;
+    margin-left:30px;
+}
+ .modulo{
+    border:1px solid #8492A6;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+.lista-aulas,.lista-modulos{
+    list-style:none;
+    
+}
+.lista-aulas li,
+.aulas .nome-modulo{
+    padding-left: 20px;
+    padding-right: 10px;
+}
+.aulas .lista-aulas li{
+  line-height: 25px;
+  display: flex;
+  justify-content: space-between; 
+}
+.aulas .lista-aulas li:hover{
+    background-color: #EEE;
+}
+.aulas .lista-aulas a{
+    color: #47525E;
+}
+.aula-right{
+    min-width: 67px;
+}
+.nome-modulo{
+    font-weight: bold;
+    line-height: 30px;
+}
+.btn-check-aula,
+.btn-checked-aula{
+    cursor: pointer;
+    
+    padding: 2px 3px;
+    border-radius: 4px;
+    color: #FFF;
+    border: 1px solid #CCC;
+    margin-left: 10px;
+}
+.btn-check-aula{
+    background-color: #FFF;
+}
+.btn-check-aula:hover{
+    background-color: #3c94c3;
+}
+.btn-checked-aula{
+    background-color: #1c5472;
+}
+/********************
+*******VIDEOS********
+**********************/
+#video{
+    width: 100%;
+    max-width: 800px;
+    min-height: 400px;
+    margin-bottom: 20px;
+}
+.comentarios{
+    margin-top: 20px;
+    border-top: 2px solid #333;
+    padding-top: 10px;
+}
+.comentarios p{
+    margin: 10px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #47525E;
+}
+.autor{
+    font-weight: bold;
+    margin-right: 20px;
+}
+.form-comentario{
+    margin-bottom: 15px;
+}
+.form-comentario textarea{
+    height: 100px;
+    border-radius: 5px; 
+}
+#btn-assitido{
+    margin-top: 15px;
+}
+/********************
+*******VIDEOS********
+**********************/
+
+/**************************
+*******QUESTIONÁRIO********
+***************************/
+.questao{
+    margin-bottom: 10px;
+    
+}
+.questao p{
+    line-height: 30px;
+    font-weight: bold;
+}
+.alternativa{
+    display: block;
+    line-height: 25px;
+
+}
+
+.form-questionario button{
+    margin: 40px auto 30px auto;
+    width: 130px;
+    height: 40px;
+    font-size: 15px;
+    display: block;
+}
+.form-questionario input[type='radio']{
+    margin-right: 10px;
+}
+.resposta-correta,
+.resposta-errada{
+    border-radius: 5px;
+    line-height: 25px;
+    color: #FFF;
+}
+.resposta-correta{
+    background-color: #1c421c;
+    border:  1px solid #1c421c;
+    
+}
+.resposta-errada{
+    background-color:#730606;
+    border:  1px solid #730606;
+}
+.titulo-secundario{
+    margin-bottom: 30px;
+}
+.btn-editar-alternativa{
+    font-size: 15px;
+    padding:3px;
+
+    background-color: #456a92;
+    color: #FFF;
+    border: 2px solid rgba(55,144,158,0.5);
+}
+.input-hidden{
+    display: none;
+}
+.lista-opcoes{
+    padding: 3px 0;
+}
+.questao{
+    border-bottom: 1px solid #CCC;
+}
+.aulas,
+.inscrever{
+    flex: 1;
+}
+.descricao{
+    flex: 2;
+    margin:0 30px;
+}
+.inscrever{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inscrever img{
+    border: 1px solid #8492A6;
+    box-shadow: 0px 0px 2px 2px #BBB;
+    padding: 2px;
+}
+.inscrever a{
+    margin-top: 20px;
+}
+.inscrever .btn{
+    line-height: 40px;
+    padding: 0;
+    width: 70%;
+    text-align: center;
+}
+.inscrever h3{
+    align-self: flex-start;
+}
+/*******************************************************
+**********************ADD CURSO*************************
+********************************************************/
+.add-curso section{
+    flex: 1;
+}
+.add-curso .btn{
+    width: 100px;
+}
+.add-curso .form-group{
+    margin: 0 0 10px 0; 
+}
+.form-add-aula,.form-add-modulo,.form-edit-aula{
+    border: 1px solid #888;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #FFF;
+}
+.form-edit-aula .btn{
+    line-height: 30px;
+    margin-top: 10px;
+    width: 150px;
+}
+.form-add-curso{
+    width: 100%;
+    max-width: 730px;
+}
+/**********************
+*******ESQUERDA********
+***********************/
+.esquerda form fieldset:first-of-type{
+    margin-top: 0;
+}
+.imagem-add-curso{
+    display: flex;
+    align-items: flex-end;
+}
+.img-thumbnail{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 30px;
+}
+.form-edit-modulo{
+    display:none;
+    border: 2px solid #1c5472;
+}
+
+.form-edit-modulo .form-group{
+    padding: 20px 20px 0 20px;
+    
+}
+.form-edit-modulo legend{
+    background-color: #1c5472;
+    color: #FFF;
+    padding: 10px 20px;
+    width: 100%;
+}
+.form-edit-modulo button{
+    margin-top: 20px;
+}
+.form-add{
+    width: 300px;
+}
+.form-add button,
+.form-add input{
+    margin-top: 10px;
+}
+.form-add-modulo{
+    margin: 10px 0;
+}
+/**********************
+*******ESQUERDA********
+***********************/
+
+/**********************
+*******DIREITA*********
+***********************/
+.direita{
+    margin-left: 30px;
+}
+.direita h4{
+    margin-bottom: 5px;
+}
+.form-edit-aula{
+    margin-bottom: 30px;
+    min-width: 600px;
+    padding: 0 20px 20px 20px;
+}
+.form-add-aula{
+    margin-bottom: 10px;
+}
+.add-curso .modulo{
+    border: 1px solid #888;
+    padding-right: 5px;
+}
+.add-curso .nome-modulo{
+   margin-left: 10px;
+}
+.container-li{
+    display: flex;
+    justify-content: space-between;
+}
+.icon-buttons{
+    min-width: 36px;
+}
+.icon-buttons a{
+    color: #0B2F56;
+}
+.li-modulo{
+    border-bottom: 1px solid #8492A6;
+}
+.li-modulo .icon-buttons{
+    line-height: 30px;
+}
+.lista-aulas .container-li{
+    padding-right: 0;
+}
+/**********************
+*******DIREITA*********
+***********************/
+
+/*******************************************************
+**********************ADD CURSO*************************
+********************************************************/
+
+/*******************************************************
+******************EDITAR QUESTIONÁRIO*******************
+********************************************************/
+.form-questionario .lista-opcoes{
+    margin-left: 0;
+}
+.li-alternativa{
+    display: flex;
+    align-items: center;
+}
+.li-alternativa input[type="radio"]{
+    padding: 5px;
+}
+/*******************************************************
+******************EDITAR QUESTIONÁRIO*******************
+********************************************************/
+
+/*********************************************************************************
+***************************************TABLETS************************************
+**********************************************************************************/
+@media(max-width:1100px){
+    .cursos{
+        justify-content: center;
+    }
+    .curso{
+        flex-wrap: wrap;
+    }
+    .grade,
+    .descricao,
+    .inscrever{
+        flex: none;
+    }
+    .grade,
+    .inscrever{
+        flex: none;
+        width: 45%;
+    }
+    .grade{
+        order: 1;
+    }
+    .descricao{
+        order: 2;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 50px;
+    }
+    /*******************************************************
+    **********************ADD CURSO*************************
+    ********************************************************/
+    .form-add{
+        width: 100%;
+    }
+    /*******************************************************
+    **********************ADD CURSO*************************
+    ********************************************************/
+    
+    /*******************************************************
+    *************************AULAS**************************
+    ********************************************************/
+    
+    /********************
+    *******VIDEOS********
+    **********************/
+    #video{
+        min-height: 300px;
+    }
+    .curso_left{
+        flex: 1 100px;
+    }
+}
+@media( max-width: 850px ){
+    /*******************************************************
+    **********************ADD CURSO*************************
+    ********************************************************/
+    .add-curso{
+        display: block;
+    }
+    .direita{
+        margin-left: 0;
+        margin-top: 50px;
+    }
+    .lista-modulos h4{
+        margin-top: 30px;
+    }
+    /*******************************************************
+    **********************ADD CURSO*************************
+    ********************************************************/
+    /*******************************************************
+    **********************AULAS*****************************
+    ********************************************************/
+    .aulas{
+        flex-direction: column;
+    }
+    .curso_left,.curso_right{
+        min-height: auto;
+    }
+    .curso_left{
+        order: 1;
+        margin-top: 20px;
+    }
+    .curso_right{
+        margin-left: 0;
+        
+    }
+    #video{
+        min-height: 400px;
+    }
+    /*******************************************************
+    **********************AULAS*****************************
+    ********************************************************/
+}
+/*********************************************************************************
+***************************************TABLETS************************************
+**********************************************************************************/
+
+
+
+/*********************************************************************************
+***************************************CELULAR************************************
+**********************************************************************************/
+@media(max-width:750px){
+    .curso{
+        flex-direction: column;
+    }
+    .grade,.inscrever{
+        width: 100%;
+        margin-top: 30px;
+    }
+    
+    .descricao{
+        order: 0;
+        margin-top: 0;
+    }
+    .grade{
+        order: 2;
+    }
+    .inscrever .btn{
+        max-width: 300px;
+        margin-top: 30px;
+    }
+    
+}
+@media( max-width: 700px ){
+    #video{
+        min-height: 350px;
+    }
+}
+@media( max-width: 550px ){
+    #video{
+        min-height: 300px;
+    }
+}
+@media( max-width: 500px ){
+    #video{
+        min-height: 250px;
+    }
+}
+@media( max-width: 400px ){
+    #video{
+        min-height: 200px;
+    }
+}
+/*********************************************************************************
+***************************************CELULAR************************************
+**********************************************************************************/

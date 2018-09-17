@@ -8,6 +8,9 @@ class Usuario extends Model{
         $resultado = parent::where($campo, $condicao, $valores, $tabela);
         return $resultado;
     }
+    public function query($sql) {
+        return parent::query($sql);
+    }
     public function all($tabela = "usuarios") {
         $resultado = parent::all($tabela);
         return $resultado;

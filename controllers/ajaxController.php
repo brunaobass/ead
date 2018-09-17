@@ -17,7 +17,29 @@ class ajaxController extends Controller {
             $aula->marcarAssistido($id);
         }
         else{
-            echo 'Deu ruim';
+            echo 'Falha ao marcar aula como assistida';
+        }
+    }
+    
+    public function desmarcar_assistido(){
+        if(isset($_POST['id'])){
+            $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+            $aula = new Aula();
+            $aula->desmarcarAssistido($id);
+        }
+        else{
+            echo 'Falha ao desmarcar aula como assistida';
+        }
+    }
+    
+    public function verifica_assistido(){
+        if(isset($_POST['id'])){
+            $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
+            $aula = new Aula();
+            echo $aula->verificaAulaAssistida($id);
+        }
+        else{
+            echo 'Falha ao verificar se aula foi assistida';
         }
     }
 }

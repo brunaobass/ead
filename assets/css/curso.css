@@ -93,23 +93,20 @@
     font-weight: bold;
     line-height: 30px;
 }
-.btn-check-aula,
-.btn-checked-aula{
-    cursor: pointer;
-    
+.btn-check-aula
+{
+    cursor: pointer;    
     padding: 2px 3px;
     border-radius: 4px;
     color: #FFF;
     border: 1px solid #CCC;
     margin-left: 10px;
 }
-.btn-check-aula{
+.not-checked{
     background-color: #FFF;
 }
-.btn-check-aula:hover{
-    background-color: #3c94c3;
-}
-.btn-checked-aula{
+
+.checked{
     background-color: #1c5472;
 }
 /********************

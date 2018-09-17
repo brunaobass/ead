@@ -9,8 +9,8 @@
             <li class="modulo"><span class="nome-modulo"><?=$modulo['nome']?></span>
                     <ul class="lista-aulas">
                         <?php
-                            foreach($modulo['aulas'] as $aula):
-                                if($aula['tipo'] == 1){
+                            foreach($modulo['aulas'] as $aula_modulo):
+                                if($aula_modulo['tipo'] == 1){
                                     $icon = 'far fa-play-circle';
                                 }
                                 else{
@@ -18,14 +18,16 @@
                                 }
                         ?>
                         
-                        <a href="<?=BASE_URL.'cursos/aula/'.$aula['id']?>">
+                        <a href="<?=BASE_URL.'cursos/aula/'.$aula_modulo['id']?>">
                             <li>
                                 <div class="aula-left">
-                                   <i class="<?=$icon?>"></i> <?=$aula[$aula['tipo_nome']]['nome']?> 
+                                   <i class="<?=$icon?>"></i> <?=$aula_modulo[$aula_modulo['tipo_nome']]['nome']?> 
                                 </div>
                                 <div class="aula-right">
                                     <span>5:00</span>
-                                    <button class="btn-check-aula" id="aula-check<?=$aula['id']?>">
+                                    <button class="btn-check-aula <?=(($aula_modulo['finalizada'] ) ? 'checked' : 'not-checked')?>" 
+                                            id="aula-check<?=$aula_modulo['id']?>" 
+                                            onclick="checkAula(this)" data-id-aula="<?=$aula_modulo['id']?>">
                                         <i class="fas fa-check"></i>
                                     </button>
                                 </div>

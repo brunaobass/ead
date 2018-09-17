@@ -37,7 +37,7 @@ class Aula extends Model{
                 $aula['questionario'] = $questionario->getQuestionarioAula('id_aula',$id);
             }
         }
-        
+        $aula['finalizada'] = $this->verificaAulaAssistida($id);
         return $aula;
     }
 
@@ -71,11 +71,17 @@ class Aula extends Model{
         
         $this->insert($campo, $valor_campo, 'historico');
     }
-    public function verificaAulaAssistida($id_aula,$id_aluno){
+    public function desmarcarAssistido($id){
+        $condicoes = ['id_aluno','id_aula'];
+        $valores = [$_SESSION['logado'],$id];
+        
+        $this->delete($condicoes, $valores, 'historico');
+    }
+    public function verificaAulaAssistida($id_aula){
         $resultado = $this->where(
                 ['id'],
                 ['id_aula','id_aluno'],
-                [$id_aula,$id_aluno],
+                [$id_aula,$_SESSION['logado']],
                 'historico'
             );
         

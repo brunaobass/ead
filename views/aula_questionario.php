@@ -26,7 +26,9 @@
                                 </a>
                                 <div class="aula-right">
                                     <span>5:00</span>
-                                    <button class="btn-check-aula" id="aula-check<?=$aula_modulo['id']?>">
+                                    <button class="btn-check-aula <?=(($aula_modulo['finalizada'] ) ? 'checked' : 'not-checked')?>" 
+                                            id="aula-check<?=$aula_modulo['id']?>" 
+                                            onclick="checkAula(this)" data-id-aula="<?=$aula_modulo['id']?>">
                                         <i class="fas fa-check"></i>
                                     </button>
                                 </div>

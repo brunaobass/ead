@@ -1,4 +1,6 @@
 var url_base = 'http://localhost/ead/modulos/';
+var mouse_over = false;
+var locked = true;
 $(document).ready(function(){
     
     //$('.form-edit-modulo').on('submit',editarModulo);
@@ -18,14 +20,12 @@ $(document).ready(function(){
         $('.menu-navegacao').hide(300);
         $(this).hide();
         $('#btn-show-menu').show();
-        console.log('Fechou menu');
         
     });
     
     $('.input-alternativa').keypress(function(e){
         if(e.which == 13){
             e.preventDefault();
-            console.log('Não enviar');
         }
     });
     $('.input-alternativa').click(function(){
@@ -35,6 +35,19 @@ $(document).ready(function(){
         preencheCampoVazio(input);
         
     });
+
+    $('.btn-check-aula').hover(
+            function(){                
+                checkUncheck($(this));
+            },
+            function(){
+                if(!locked){
+                    locked = true;
+                }else{
+                    checkUncheck($(this));
+                }
+            }
+        );    
 });
 function preencheCampoVazio(input){
     var alternativa = input.val();
@@ -68,19 +81,33 @@ function updateArea(){
     $('#video').css('height',video_altura+'px');
     
 }
-function marcarAssistido(obj){
+function concluirAula(obj){
     var id = $(obj).attr('data-id');
-    console.log(id);
-    
+    marcarAssistido(id);
+    $(obj).remove();
+}
+function marcarAssistido(id){
+        
     $.ajax({
         url:'http://localhost/ead/ajax/marcar_assistido',
         type:'POST',
         data:{id:id},
         success:function(){
-            console.log('Deu certo');
+            console.log('Marcar aula');
         }
-    });
-    $(obj).remove();
+    });    
+}
+
+function desmarcarAssistido(id){
+ 
+    $.ajax({
+        url:'http://localhost/ead/ajax/desmarcar_assistido',
+        type:'POST',
+        data:{id:id},
+        success:function(){
+            console.log('Desmarcar aula');
+        }
+    });    
 }
 $(function(){
     if($('.curso_left').length){
@@ -311,42 +338,32 @@ function editarAlternativa(obj){
 function checkAula(obj){
     var elemento = $(obj);
     var id = elemento.attr('data-id-aula');
-    console.log('Aula '+id+' assistida!');
-    
-    if(elemento.hasClass('btn-check-aula')){
-        elemento.removeClass('btn-check-aula');
-        elemento.addClass('btn-checked-aula');
+
+    if(locked){
+        locked = false;
+             
+    }else{
+        checkUncheck(elemento);
     }
     
-    else if(elemento.hasClass('btn-checked-aula')){
-        elemento.removeClass('btn-checked-aula');
-        elemento.addClass('btn-check-aula');
-    }
-    
-    /*$.ajax({
-        url:'http://localhost/ead/ajax/marcar_assistido',
-        type:'POST',
-        data:{id:id},
-        success:function(){
-            console.log('Deu certo');
-        }
-    });
-    $(obj).remove();*/
-}
-function marcarAssistido(obj){
-    var id = $(obj).attr('data-id');
-    console.log(id);
     
     $.ajax({
-        url:'http://localhost/ead/ajax/marcar_assistido',
+        url:'http://localhost/ead/ajax/verifica_assistido',
         type:'POST',
         data:{id:id},
-        success:function(){
-            console.log('Deu certo');
+        success:function(resultado){
+            console.log(resultado);
+            if(resultado){
+                desmarcarAssistido(id);
+            }
+            else{
+                marcarAssistido(id);
+            }
         }
     });
-    $(obj).remove();
+    
 }
+
 $(function(){
     $(".demo").starRating({
         totalStars:5,
@@ -428,4 +445,16 @@ function editForm(obj){
         $('#editar'+id_modulo).hide();
     }
 
+}
+
+function checkUncheck(elemento){
+    if(elemento.hasClass('checked')){
+        elemento.removeClass('checked');
+        elemento.addClass('not-checked');
+      }
+
+      else if(elemento.hasClass('not-checked')){
+          elemento.removeClass('not-checked');
+          elemento.addClass('checked');
+      }
 }

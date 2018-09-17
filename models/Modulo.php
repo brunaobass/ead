@@ -42,6 +42,24 @@ class Modulo extends Model{
         
         return $modulos;
     }
+    public function getModulosComAulas($id){
+       
+        $sql = 'SELECT * FROM modulos m WHERE m.id_curso = '.$id.' AND (SELECT COUNT(*) FROM aulas a WHERE m.id = a.id_modulo) > 0';
+        $modulos = $this->query($sql);
+ 
+        if(count($modulos) > 0){
+            $aula = new Aula();
+            
+            foreach ($modulos as $mChave => $mDados ){
+                $aulas = $aula->getAulasModulo($mDados['id']);
+
+                $modulos[$mChave]['aulas'] = $aulas;                  
+
+            }
+        }
+        
+        return $modulos;
+    }
     public function getModulo($id){
         $modulo = $this->where(['*'], ['id'], [$id]);
         return $modulo[0];

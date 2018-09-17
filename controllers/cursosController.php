@@ -51,8 +51,8 @@ class cursosController extends Controller{
         $dados['title'] = $curso->getNome();
         $dados['titulo_principal'] = $curso->getNome();
         $dados['curso'] = $curso->getInfo();
-        $dados['modulos'] = $modulo->getModulos($id);
-        
+        $dados['modulos'] = $modulo->getModulosComAulas($id);
+
         if($aluno->isInscrito($id)){            
             $this->loadTemplate("curso", $dados);  
         }
@@ -89,14 +89,14 @@ class cursosController extends Controller{
             $dados['title'] = $curso->getNome();
             $dados['titulo_principal'] = $curso->getNome();
             $dados['curso'] = $curso->getInfo();
-            $dados['modulos'] = $modulo->getModulos($id_curso);
+            $dados['modulos'] = $modulo->getModulosComAulas($id_curso);
             $dados['aula'] = $aula->getAula($id_aula);
+
             
             if($dados['aula']['tipo'] == 1){
                 $view = "aula_video";
                 $mensagem = filter_input(INPUT_POST, 'mensagem',FILTER_SANITIZE_STRING);
-                $this->salvar($aluno->getID(),$dados['aula']['video']['id'],$mensagem);
-                $dados['aula_assistida'] = $aula->verificaAulaAssistida($id_aula, $aluno->getID());
+                $this->salvar($aluno->getID(),$dados['aula']['video']['id'],$mensagem);                
             }
             else{
                 $view = 'aula_questionario';
@@ -300,6 +300,16 @@ class cursosController extends Controller{
         }
         
         return '';
+    }
+    
+    public function inscrever($id_curso){
+        $matricula = new Matricula();
+        $matricula->inscrever($id_curso);
+        
+        $_SESSION['success'] = 'Matrícula realizada com sucesso';
+        header('Location:'.BASE_URL);
+        
+        
     }
 }
 

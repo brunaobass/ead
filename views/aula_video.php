@@ -26,7 +26,8 @@
                                 </a>
                                 <div class="aula-right">
                                     <span>5:00</span>
-                                    <button class="btn-checked-aula" id="aula-check<?=$aula_modulo['id']?>" 
+                                    <button class="btn-check-aula <?=(($aula_modulo['finalizada'] ) ? 'checked' : 'not-checked')?>" 
+                                            id="aula-check<?=$aula_modulo['id']?>" 
                                             onclick="checkAula(this)" data-id-aula="<?=$aula_modulo['id']?>">
                                         <i class="fas fa-check"></i>
                                     </button>
@@ -52,13 +53,13 @@
                 allowfullscreen></iframe>     
         <p><?=$aula['video']['descricao']?></p>
         <?php
-            if($aula_assistida):
+            if($aula['finalizada']):
         ?>
         <p>Esta aula já foi assistida</p>
         <?php
             else:
         ?>
-        <button class="btn btn-secundario" onclick="marcarAssistido(this)" data-id="<?=$aula['id']?>" id="btn-assitido">
+        <button class="btn btn-secundario" onclick="concluirAula(this)" data-id="<?=$aula['id']?>" id="btn-assitido">
             Marcar como assistido</button>
         <?php
             endif;

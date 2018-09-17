@@ -14,7 +14,7 @@ class Model{
         if($resultado->rowCount()> 0 ){
             $resultado = $resultado->fetchAll();
         }
-        
+
         return $resultado;
     }
     protected function all($tabela){

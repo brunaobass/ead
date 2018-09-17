@@ -35,8 +35,8 @@ class Curso extends Model{
     }
     public function getCursosDoAluno($id_aluno){
         $cursos = array();
-        $sql = "SELECT ac.id_curso as id,c.nome,c.imagem,c.descricao FROM aluno_curso  ac LEFT JOIN cursos c ON ac.id_curso = c.id "
-              ."WHERE ac.id_aluno = ".$id_aluno;
+        $sql = "SELECT m.id_curso as id,c.nome,c.imagem,c.descricao FROM matriculas  m LEFT JOIN cursos c ON m.id_curso = c.id "
+              ."WHERE m.id_aluno = ".$id_aluno;
         
         $sql = $this->db->query($sql);
         if($sql->rowCount() > 0){
@@ -67,7 +67,7 @@ class Curso extends Model{
         $id_instrutor = $this->getInstrutorID($id_curso);
 
         if($id_instrutor != $_SESSION['logado']){
-            $_SESSION['erro'] = 'Você não tem permissão para acessar essa bosta';
+            $_SESSION['erro'] = 'Você não tem permissão para acessar esta área';
             header('Location:'.BASE_URL);
             exit;
         }

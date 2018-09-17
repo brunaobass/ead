@@ -6,7 +6,7 @@ class Aluno extends Usuario{
         $campo = ['id'];
         $condicao = ['id_curso','id_aluno'];
         $valores = [$id_curso, $this->info['id']];
-        $tabela = "aluno_curso";
+        $tabela = "matriculas";
         $inscrito = $this->where($campo, $condicao, $valores,$tabela);
         
         if(count($inscrito) > 0){

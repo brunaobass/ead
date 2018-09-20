@@ -13,3 +13,10 @@ if(isset($_SESSION['erro']) && !empty($_SESSION['erro'])):?>
 endif;
 ?>
 
+<?php
+
+if(isset($_SESSION['semcurso']) && !empty($_SESSION['semcurso'])):?>
+    <p class="alert alert-semcurso"><?=$_SESSION['semcurso']?></p>
+<?php
+    unset($_SESSION['semcurso']);
+endif;

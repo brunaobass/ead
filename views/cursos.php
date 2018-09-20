@@ -23,9 +23,9 @@
 
     <ul class="pagination">
         <?php
-            for($i = 1; $i<=10;$i++):
+            for($i = 1; $i<=$num_paginas;$i++):
         ?>
-        <a href="<?=BASE_URL.'cursos/page/'.$i?>"><li><?=$i?></li></a>
+        <a href="<?=BASE_URL.'cursos/?p='.$i?>"><li><?=$i?></li></a>
         <?php
             endfor;
         ?>

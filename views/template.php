@@ -27,10 +27,9 @@
                     <nav class="menu-navegacao">
                         <ul>
                             <a href="<?=BASE_URL?>cursos">
-                                <li class="dropdown first-li">Cursos<i class="fas fa-angle-down"></i></li>
+                                <li class="dropdown first-li">Cursos</li>
                             </a>
-                            <a href="<?=BASE_URL?>"><li>Como funciona</li></a>
-                            <a href="<?=BASE_URL?>"><li class="dropdown">Nossos planos<i class="fas fa-angle-down"></i></li></a>
+                            <a href="<?=BASE_URL?>"><li>Como funciona</li></a>                       
                             <a href="<?=BASE_URL?>"><li>Suporte</li></a>
                         </ul>
                     </nav>
@@ -41,7 +40,7 @@
                         <?php
                             if(isset($logado) && $logado === true):
                         ?>
-                        <button class="btn-icon" id="btn-perfil"><i class="fas fa-user-alt"></i></a> 
+                        <button class="btn-icon" id="btn-perfil"><i class="fas fa-user-alt"></i></button>
                         <button class="btn-icon" id="btn-show-menu"><i class="fas fa-bars"></i></button>
                         <button class="btn-icon" id="btn-close-menu"><i class="fa fa-times"></i></button>
                         <?php
@@ -61,7 +60,7 @@
         <div class="conteudo topo-hidden"><!--TOPO HIDDEN-->
             <form method="POST" class="form-pesquisa">
                 <input type="search" class="pesquisa">
-                <button type="submit" class="btn btn-primary">Pesquisar</i></button>
+                <button type="submit" class="btn btn-primary">Pesquisar</button>
             </form>
         </div><!--TOPO HIDDEN-->
     </header>
@@ -107,7 +106,7 @@
             </div>
             <div class="coluna">
                 <ul class="menu-rodape">
-                    <a href="<?=BASE_URL?>"><li>Para empresas</li>
+                    <a href="<?=BASE_URL?>"><li>Para empresas</li></a>
                     <a href="<?=BASE_URL?>"><li>FAQ</li></a>
                     <a href="<?=BASE_URL?>"><li>Contato</li></a>
                 </ul>
@@ -115,7 +114,7 @@
             <div class="coluna">
                 <ul class="menu-rodape">
                     <a href="<?=BASE_URL?>"><li>Termos de uso</li></a>
-                    <a href="<?=BASE_URL?>"><li>Políticas de privacida</li></a>
+                    <a href="<?=BASE_URL?>"><li>Políticas de privacidade</li></a>
                     <a href="<?=BASE_URL?>"><li>Certificados</li></a>
                 </ul>
             </div>

@@ -1,8 +1,8 @@
-
+<?php
+    require 'alerts.php';
+?>
 <section class="coluna form-login">
-    <?php
-        require 'alerts.php';
-    ?>
+    
     <form method="POST">
         <div class="form-group">
             <label for="email">Email</label>

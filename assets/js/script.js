@@ -223,6 +223,10 @@ function adicionarQuestao(obj){
                             data-id-questao ="'+id_questao+'">\n\
                             <i class="far fa-edit editar"></i>\n\
                         </a>\n\
+                        <a href="javascript:;" onclick="excluirQuestao(this)" class="btn-excluir-alternativa"\n\
+                            data-id-questao ="'+id_questao+'">\n\
+                            <i class="far fa-trash-alt excluir"></i>\n\
+                        </a>\n\
                         \n\
                         <input type="text" name="questao'+id_questao+'" class="input-hidden" \n\
                             value="Nova Questão">\n\
@@ -305,6 +309,22 @@ function editarQuestao(obj){
         }
     });
 }
+function excluirQuestao(obj){
+
+    var id_questao = $(obj).attr('data-id-questao');
+    var parent = $(obj).parent();
+    var input = $(obj).parent().find('[type="text"]');
+    
+    var html = '<input type="hidden" name="id-delete'+id_questao+'" value="'+id_questao+'">';
+    console.log($(obj).parent());
+    parent.append(html);
+    parent.parent().hide();
+    
+    input.select();
+    preencheCampoVazio(input);
+    
+}
+
 function editarAlternativa(obj){
 
     var id_questao = $(obj).attr('data-id-questao');

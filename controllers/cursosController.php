@@ -16,11 +16,15 @@ class cursosController extends Controller{
         
     }
     public function index(){
+
+        $pagina_atual = $this->getPaginaAtual();
+
         $dados = [
             'title' => 'Cursos',
             'css'   => 'home',
             'titulo_principal' => 'Cursos',
-            'cursos' => $this->curso->getCursos(),
+            'cursos' => $this->curso->getCursos($pagina_atual),
+            'num_paginas' => $this->curso->getNumPaginas(),
             'logado' => $this->logado
         ];
         $this->loadTemplate('cursos',$dados);
@@ -31,16 +35,16 @@ class cursosController extends Controller{
     public function entrar($id){
         $aluno = new Aluno();
         
-        if(!($aluno->logado())){
-            header("Location:".BASE_URL."login");
+        if(($aluno->logado())){
+            $aluno->setUsuario($_SESSION['logado']);
+            $this->logado = true;
+            $dados['info'] = $aluno->getInfo();
         }
+        
         $dados = array(
             'logado' => $this->logado
         );
-        $aluno->setUsuario($_SESSION['logado']);
-        
-        $dados['logado'] = true;
-        $dados['info'] = $aluno->getInfo();
+
         $dados['css'] = 'curso';
         
         $curso = new Curso(); 
@@ -53,7 +57,7 @@ class cursosController extends Controller{
         $dados['curso'] = $curso->getInfo();
         $dados['modulos'] = $modulo->getModulosComAulas($id);
 
-        if($aluno->isInscrito($id)){            
+        if($aluno->isInscrito($id) && $aluno->logado()){            
             $this->loadTemplate("curso", $dados);  
         }
         else {
@@ -105,6 +109,7 @@ class cursosController extends Controller{
                 
                 if(isset($_POST) && !empty($_POST)){
                     $dados['questoes'] = $this->preencheAlternativas($questionario['questoes']);
+                    $aula->marcarAssistido($id_aula);
                 }
                 else{
                     $dados['questoes'] = $questionario['questoes'];
@@ -303,13 +308,34 @@ class cursosController extends Controller{
     }
     
     public function inscrever($id_curso){
+        if(!($this->usuario->logado())){
+            $_SESSION['erro'] = 'Você precisa estar logado para se inscrever em um curso';
+            header("Location:".BASE_URL."login");
+            exit;
+        }
         $matricula = new Matricula();
         $matricula->inscrever($id_curso);
         
         $_SESSION['success'] = 'Matrícula realizada com sucesso';
         header('Location:'.BASE_URL);
+        exit;
         
         
+    }
+    private function getPaginaAtual(){
+        if(!empty($_GET['p'])){
+            $pagina_atual = filter_input(INPUT_GET, 'p',FILTER_VALIDATE_INT);
+            
+            if($pagina_atual == false){
+                header('Location:'.BASE_URL);
+                exit;
+            }  
+        }
+        else {
+            $pagina_atual = 1;
+        }
+        
+        return $pagina_atual;
     }
 }
 

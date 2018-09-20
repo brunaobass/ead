@@ -152,7 +152,11 @@ class aulasController extends Controller{
         $alternativas = array();
         
         for( $i=0; $i<$num_questoes;$i++){
+            $questoes[$i]['id-delete'] = filter_input(INPUT_POST, 'id-delete'.($i+1),FILTER_VALIDATE_INT);            
             $questoes[$i]['id'] = filter_input(INPUT_POST, 'id-questao'.($i+1),FILTER_VALIDATE_INT);
+            if(isset($questoes[$i]['id-delete']) && $questoes[$i]['id-delete'] != false){
+                continue;
+            }
             $questoes[$i]['pergunta'] = filter_input(INPUT_POST, 'questao'.($i+1),FILTER_SANITIZE_STRING);
             $questoes[$i]['resposta'] = filter_input(INPUT_POST, 'resposta-questao'.($i+1),FILTER_SANITIZE_STRING);
             
@@ -162,19 +166,23 @@ class aulasController extends Controller{
                 $alternativas[$i][$j]['texto'] = filter_input(INPUT_POST,'quest'.($i+1).'-alt'.($j+1),FILTER_SANITIZE_STRING);   
             }          
         }
-        
+
         $quest = new Questao();
         foreach ($questoes as $questao){
             if($questao['id']<=$num_questoes_prev){
-                $quest->atualizar($id_questionario,$questao);
+                if(empty($questao['id-delete'])){
+                   $quest->atualizar($id_questionario,$questao); 
+                }
+                else{   
+                    $quest->excluir($questao['id'],$id_questionario);
+                }
+                
             }
             else{
                $quest->inserir($id_questionario,$questao); 
             }
         }
-        echo '<br>--------------------------------------------------<br>ALTERNATIVAS<br>';
         
-
         $alt = new Alternativa();
         foreach ($alternativas as $alternativa){
             if($alternativa['id_questao']<=$num_questoes_prev){

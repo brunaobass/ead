@@ -37,7 +37,10 @@ class Aula extends Model{
                 $aula['questionario'] = $questionario->getQuestionarioAula('id_aula',$id);
             }
         }
-        $aula['finalizada'] = $this->verificaAulaAssistida($id);
+        if(!empty($_SESSION['logado'])){
+            $aula['finalizada'] = $this->verificaAulaAssistida($id);
+        }
+        
         return $aula;
     }
 

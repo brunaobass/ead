@@ -37,8 +37,12 @@ class Questionario extends Model{
     public function excluir($id_aula){
         $questao = new Questao();
         $questionario = $this->getQuestionarioAula('id_aula',$id_aula);
-
-        $questao->excluir($questionario['id']);
+        $questoes = $questao->where(['id'],['id_questionario'],[$questionario['id'],'questoes']);
+        var_dump($questoes);
+        exit;
+        foreach ($questoes as $questao){
+            $questao->excluir($questao['id'],$questionario['id']);
+        }
         $this->delete(['id'], [$questionario['id']]);
    
     }

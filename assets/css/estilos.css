@@ -210,6 +210,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 400px;
     
 }
 .titulo-principal{
@@ -306,6 +307,25 @@ footer .coluna{
 }
 .alert-success{
     background-color: #1c421c;
+}
+.alert-semcurso{
+    background-color: #1c5472;
+    width: fit-content;
+    padding-right: 20px;
+    line-height: 60px;
+    height: 60px;
+    
+}
+.alert-semcurso a{
+    color: #FFF;
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    padding: 10px 5px;
+    margin-left: 20px;
+
+}
+.alert-semcurso a:hover{
+    background-color: rgba(255,255,255,.3);
 }
 /*******************
 *****ALERTS*********

@@ -4,6 +4,7 @@ class Curso extends Model{
     
     private $id;
     private $info;
+ 
     public function __construct($id = '') {
         parent::__construct();
         if(!empty($id)){			
@@ -18,6 +19,17 @@ class Curso extends Model{
         $resultado = parent::all($tabela);
         return $resultado;
     }
+    
+    public function query($sql) {
+        return parent::query($sql);
+    }
+    
+    public function pagination($pagina_atual,$tabela = 'cursos') {
+        return parent::pagination($pagina_atual,$tabela);
+    }
+    public function getTotalItens($tabela = 'cursos') {
+        return parent::getTotalItens($tabela);
+    }
     public function insert($campo, $valor_campo, $tabela = 'cursos') {
         parent::insert($campo, $valor_campo, $tabela);
     }
@@ -29,8 +41,8 @@ class Curso extends Model{
         parent::update($campo, $valor_campo, $condicao, $valor_condicao, $tabela);
     }
 
-    public function getCursos(){
-        $cursos = $this->all();     
+    public function getCursos($pagina_atual){
+        $cursos = $this->pagination($pagina_atual);     
         return $cursos;
     }
     public function getCursosDoAluno($id_aluno){
@@ -63,6 +75,11 @@ class Curso extends Model{
         
         return $resultado[0]['instrutor_id'];
     }
+    
+    public function getTotalCursos(){
+        return $this->getTotalItens();
+    }
+
     public function autorizaAcessoInstrutor($id_curso){
         $id_instrutor = $this->getInstrutorID($id_curso);
 

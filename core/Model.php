@@ -3,7 +3,7 @@
 class Model{
 
     protected $db;
-
+    private $itemPorPagina = 8;
     public function __construct(){
             global $db;
             $this->db = $db; 
@@ -28,6 +28,35 @@ class Model{
         }
         
         return $resultado;
+    }
+    protected function getTotalItens($tabela){
+
+        $sql = "SELECT COUNT(*) as total FROM ".$tabela;
+        
+        $sql = $this->db->query($sql);      
+        $resultado = $sql->fetch();
+  
+        return $resultado['total'];
+    }
+
+    public function pagination($pagina_atual,$tabela){
+        $limit = $this->itemPorPagina;
+        
+        $offset = ($pagina_atual*$limit)-$limit;
+        $sql = 'SELECT * FROM '.$tabela.' LIMIT '.$offset.','.$limit;
+        $resultado = array();
+        $query = $this->db->query($sql);
+        if($query->rowCount() > 0){
+            $resultado = $query->fetchAll();
+        }
+
+        return $resultado;        
+    }
+    public function getNumPaginas(){
+        $total_cursos = $this->getTotalCursos();
+        $num_paginas = ceil($total_cursos/ $this->itemPorPagina);
+        
+        return $num_paginas;
     }
     protected function where($campo,$condicao,$valores,$tabela){
         

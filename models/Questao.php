@@ -45,19 +45,17 @@ class Questao extends Model {
                 [$questao['id'],$id_questionario]
             );
     }
-    public function excluir($id_questionario){
+    public function excluir($id_questao,$id_questionario){
 
-        $alt = new Alternativa();
-        $questoes = $this->where(['id'],['id_questionario'],[$id_questionario]);
-        foreach ($questoes as $questao){
-            $alternativas = $alt->getAlternativas($questao['id'], $id_questionario);
-            
-            foreach ($alternativas as $alternativa){
-                $alt->excluir($alternativa['id'],$questao['id'], $id_questionario);
-            }
+        $alt = new Alternativa();   
+        $alternativas = $alt->getAlternativas($id_questao, $id_questionario);
 
-            $this->delete(['id','id_questionario'], [$questao['id'],$id_questionario]);
+        foreach ($alternativas as $alternativa){
+            $alt->excluir($alternativa['id'],$id_questao, $id_questionario);
         }
+
+        $this->delete(['id','id_questionario'], [$id_questao,$id_questionario]);
+        
     }
     
 }

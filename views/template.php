@@ -7,7 +7,14 @@
         <link rel="stylesheet" type="text/css" href="<?=BASE_URL?>assets/css/fontawesome-all.min.css">
         <link rel="stylesheet" type="text/css" href="<?=BASE_URL?>assets/css/estilos.css">
         <link rel="stylesheet" type="text/css" href="<?=BASE_URL?>assets/css/star-rating-svg.css">
-
+        
+        <?php
+            if(!isset($logado) || $logado === false):
+        ?>
+            <link rel="stylesheet" type="text/css" href="<?=BASE_URL?>assets/css/deslogado.css">
+        <?php
+            endif;
+        ?>
         <?php
             if(isset($css) && !empty($css)){
                 echo '<link rel="stylesheet" type="text/css" href="'.BASE_URL.'assets/css/'.$css.'.css">';
@@ -31,23 +38,38 @@
                             </a>
                             <a href="<?=BASE_URL?>"><li>Como funciona</li></a>                       
                             <a href="<?=BASE_URL?>"><li>Suporte</li></a>
+                            <li class="li-deslogado">
+                                <div class="botoes-deslogado">
+                                    <a href="<?=BASE_URL?>login" class="btn btn-secundario">ENTRAR</a>
+                                    <a href="<?=BASE_URL?>login/cadastrar" class="btn btn-primary">CADASTRAR</a>
+                                </div><!--BOTOES DESLOGADOS-->
+                            </li>
                         </ul>
                     </nav>
                 </div><!--MENU-->
-                <div class="topo-direita"> <!--TOPO DIREITA-->              
+                <form method="POST" class="form-pesquisa" action="<?=BASE_URL.'cursos/pesquisar'?>">
+                    <input type="search" class="pesquisa" name="pesquisar" placeholder="Pesquisar curso">
+                    <button type="submit"class="btn-icon icone-pesquisa"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="topo-direita"> <!--TOPO DIREITA--> 
+                    
                     <div class="botoes"><!--BOTOES-->
-                        <button class="btn-icon icone-pesquisa"><i class="fas fa-search"></i></button>
+                        <button class="btn-icon" id="btn-show-menu"><i class="fas fa-bars"></i></button>
+                        <button class="btn-icon" id="btn-close-menu"><i class="fa fa-times"></i></button>   
                         <?php
                             if(isset($logado) && $logado === true):
                         ?>
-                        <button class="btn-icon" id="btn-perfil"><i class="fas fa-user-alt"></i></button>
-                        <button class="btn-icon" id="btn-show-menu"><i class="fas fa-bars"></i></button>
-                        <button class="btn-icon" id="btn-close-menu"><i class="fa fa-times"></i></button>
+                        <div class="botoes-logado"><!--BOTOES-->
+                            <button class="btn-icon" id="btn-perfil"><i class="fas fa-user-alt"></i></button>
+                        </div><!--BOTOES DESLOGADOS-->
+                        
                         <?php
                             else:
                         ?>
+                        <div class="botoes-deslogado">
                             <a href="<?=BASE_URL?>login" class="btn btn-secundario">ENTRAR</a>
                             <a href="<?=BASE_URL?>login/cadastrar" class="btn btn-primary">CADASTRAR</a>
+                        </div><!--BOTOES DESLOGADOS-->
                         <?php
                             endif;
                         ?>
@@ -57,12 +79,13 @@
             
             
         </div><!--CONTEÚDO-->
-        <div class="conteudo topo-hidden"><!--TOPO HIDDEN-->
-            <form method="POST" class="form-pesquisa">
-                <input type="search" class="pesquisa">
-                <button type="submit" class="btn btn-primary">Pesquisar</button>
-            </form>
-        </div><!--TOPO HIDDEN-->
+        <div class="conteudo">
+            
+        
+        
+            
+ 
+        </div>
     </header>
     <main>
         <?php
@@ -95,7 +118,7 @@
     <footer class="rodape">
         <div class="conteudo"><!--CONTEÚDO-->
             
-            <div class="coluna">
+            <div class="coluna footer1">
                 <div class="logo"><!--LOGO-->
                     <a href="<?=BASE_URL?>"><h1>EAD</h1></a>
                 </div><!--LOGO-->
@@ -104,6 +127,7 @@
                     <img src="<?=BASE_URL?>assets/images/icones/youtube.png">
                 </div>
             </div>
+
             <div class="coluna">
                 <ul class="menu-rodape">
                     <a href="<?=BASE_URL?>"><li>Para empresas</li></a>
@@ -118,6 +142,8 @@
                     <a href="<?=BASE_URL?>"><li>Certificados</li></a>
                 </ul>
             </div>
+
+            
             <div class="coluna coluna-email">
                 
                     <p>Deixe seu email e fique por dentro das novidades</p>

@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/ead/assets/css/curso.css</file>
+            <file>file:/C:/wamp64/www/ead/assets/css/login.css</file>
+            <file>file:/C:/wamp64/www/ead/views/template.php</file>
+            <file>file:/C:/wamp64/www/ead/assets/css/estilos.css</file>
             <file>file:/C:/wamp64/www/ead/controllers/aulasController.php</file>
-            <file>file:/C:/wamp64/www/ead/assets/js/script.js</file>
             <file>file:/C:/wamp64/www/ead/controllers/cursosController.php</file>
-            <file>file:/C:/wamp64/www/ead/views/editar_aula_questionario.php</file>
+            <file>file:/C:/wamp64/www/ead/assets/css/deslogado.css</file>
         </group>
     </open-files>
 </project-private>

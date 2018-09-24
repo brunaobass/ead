@@ -59,7 +59,7 @@
             
         </div><!--CONTEÚDO-->
         <div class="conteudo topo-hidden"><!--TOPO HIDDEN-->
-            <form method="POST" class="form-pesquisa">
+            <form method="POST" class="form-pesquisa" action="<?=BASE_URL.'cursos/pesquisar'?>">
                 <input type="search" class="pesquisa">
                 <button type="submit" class="btn btn-primary">Pesquisar</i></button>
             </form>

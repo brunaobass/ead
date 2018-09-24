@@ -124,7 +124,22 @@ class cursosController extends Controller{
             exit;
         }
     }
-    
+    public function pesquisar(){
+        $cursos = array();
+        if(isset($_POST) && !empty($_POST)){
+            $pesquisa = filter_input(INPUT_POST, 'pesquisar',FILTER_SANITIZE_STRING);
+            $cursos = $this->curso->getCursosPesquisa($pesquisa);
+        }
+        $dados = [
+            'title' => 'Cursos',
+            'css'   => 'home',
+            'titulo_principal' => 'Cursos',
+            'cursos' => $cursos,
+            'logado' => $this->logado
+        ];
+ 
+        $this->loadTemplate('cursos',$dados);
+    }
     private function salvar($id_aluno,$id_video,$mensagem){
         $resposta = "";
         

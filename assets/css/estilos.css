@@ -113,6 +113,8 @@ header{
     font-family: knewave;
     letter-spacing: 4px;
     font-size: 50px;
+    height: 50px;
+    line-height: 50px;
 }
 /*****MENU DE NAVEGAÇÃO****/
 .menu{
@@ -146,6 +148,9 @@ header{
 .menu-navegacao i{
     margin-left: 5px;
 }
+.li-deslogado{
+    display:none;
+}
 /*****MENU DE NAVEGAÇÃO****/
 
 /*****ÍCONES A DIREITA****/
@@ -153,11 +158,17 @@ header{
     display: flex;
     align-items: center;
 }
+.botoes{
+    display: flex;
+}
+.botoes .btn{
+    margin-left: 10px;
+}
 .btn-icon{
     background-color: #0B2F56;
     color: #FFF;
     padding: 0 10px;
-    line-height: 29px;
+    line-height: 32px;
     border-radius: 5px;
     cursor: pointer;
     margin-left: 10px;
@@ -186,17 +197,27 @@ header{
 /*****ÍCONES A DIREITA****/
 
 /*****ÍCONES ESCONDIDOS****/
+
+
 .form-pesquisa{
-    width: 100%;
-    margin: 20px;
-    display: none;
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+    
 }
 
 .form-pesquisa input{
-    width: 80%;
+    width: 212px;;
     line-height: 30px;
+    margin-right: 0;
+    border-radius: 5px 0 0 5px;
 }
 
+.form-pesquisa .btn-icon{
+    margin: 0;
+    border-radius:  0 5px 5px 0 ;
+    line-height: 32px;
+}
 /*****ÍCONES A DIREITA****/
 
 /*******************
@@ -263,6 +284,9 @@ footer{
     margin-top: 50px;
     padding: 10px 0 20px 0;
 }
+footer .logo{
+    margin-bottom: 20px;
+}
 footer .coluna{  
     justify-content: center;
 }
@@ -279,12 +303,25 @@ footer .coluna{
 .form-email button{
     width: 100px;
 }
+
 .socials img{
     width: 40px;
     height: 40px;
+    margin-right: 20px;
+}
+.menus-rodape{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.menus-rodape .coluna{
+    margin: 0 20px;
 }
 .menu-rodape li{
     margin: 10px 0;
+}
+.menu-rodape li:first-child{
+    margin-top: 0;
 }
 /*******************
 *****RODAPÉ******
@@ -346,7 +383,7 @@ footer .coluna{
     }
     .coluna-email{
         min-width: 400px !important;
-        margin-top: 50px;
+        margin-top: 30px;
     }
 }
 
@@ -371,7 +408,7 @@ footer .coluna{
 /***********************************************************************
 **********************************CELULAR*******************************
 ************************************************************************/
-@media(max-width: 650px){
+@media(max-width: 685px){
     header{
         padding: 0;
     }
@@ -405,7 +442,7 @@ footer .coluna{
     .first-li{
         border-top: 1px solid #FFF;
     }
-    .logo{
+    .topo .logo{
         margin-left: 20px;
     }
     
@@ -418,6 +455,7 @@ footer .coluna{
     }
     .topo-direita{
         margin-right: 20px;
+        flex-wrap: wrap;
     }
     .btn-icon{
         line-height: 40px;
@@ -429,7 +467,51 @@ footer .coluna{
     .botoes .icone-pesquisa{
         display: none;
     }
+
     /*****ÍCONES A DIREITA****/
+    
+    /*******************
+    *****RODAPÉ******
+    ********************/
+    .footer1,.coluna-email{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    /*******************
+    *****RODAPÉ******
+    ********************/
+
+    
+}
+@media(max-width:520px){
+    .topo-show{
+        margin-top: 20px;
+    }
+    .topo-direita{
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .form-pesquisa{
+        order:1;
+        margin-top: 40px;
+        margin-left: 20px;
+        width: 90%;
+    }
+    .form-pesquisa input{
+        width: 100%;
+    }
+}
+@media(max-width:465px){
+    .menu-rodape:first-of-type{
+        margin-bottom: 30px;
+    }
+    
+    .coluna-email{
+        margin-top: 0;
+        min-width: 100% !important;
+    }
 }
 
 /***********************************************************************

@@ -52,3 +52,23 @@
     display: block;
     text-align: center;
 }
+
+@media(max-width:625px){
+    .form-login form{
+         width: 80%;
+     } 
+     .login-buttons .btn{
+         width: 45%;
+     }
+ }
+ @media(max-width:500px){
+     .login-buttons{
+         flex-direction: column;
+     }
+     .login-buttons .btn{
+         width: 100%;
+     }
+     .login-buttons .btn:first-child{
+         margin-bottom: 10px;
+     }
+ }

@@ -24,7 +24,10 @@ class aulasController extends Controller{
         
     }
     public function adicionar(){
-        
+        if(!($this->usuario->logado())){
+            $_SESSION['erro'] = 'Você não tem permissão para realizar esta ação';
+            header("Location:".BASE_URL."login");
+        }
         $id_curso = filter_input(INPUT_POST, 'id_curso',FILTER_VALIDATE_INT);
         
         if(empty($id_curso) || $id_curso === false){
@@ -60,7 +63,10 @@ class aulasController extends Controller{
     }
 
     public function deletar(){
-
+        if(!($this->usuario->logado())){
+            $_SESSION['erro'] = 'Você não tem permissão para realizar esta ação';
+            header("Location:".BASE_URL."login");
+        }
         $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
         $aula = $this->aula->getAula($id);
 
@@ -73,6 +79,10 @@ class aulasController extends Controller{
     }
     
     public function editar($id){
+        if(!($this->usuario->logado())){
+            $_SESSION['erro'] = 'Você não tem permissão para realizar esta ação';
+            header("Location:".BASE_URL."login");
+        }
         $aula = new Aula();
         $modulo = new Modulo();
         
@@ -104,7 +114,10 @@ class aulasController extends Controller{
     }
     
     public function editarVideo($id_aula){
-
+        if(!($this->usuario->logado())){
+            $_SESSION['erro'] = 'Você não tem permissão para realizar esta ação';
+            header("Location:".BASE_URL."login");
+        }
         $curso = $this->aula->getCursoAula($id_aula);        
         $aula = $this->aula->getAula($id_aula);
         
@@ -139,7 +152,10 @@ class aulasController extends Controller{
     }
     
     public function editarQuestionario($id_questionario){
-
+        if(!($this->usuario->logado())){
+            $_SESSION['erro'] = 'Você não tem permissão para realizar esta ação';
+            header("Location:".BASE_URL."login");
+        }
         $num_questoes = filter_input(INPUT_POST, 'id-ultima-questao',FILTER_VALIDATE_INT);
         $num_questoes_prev = filter_input(INPUT_POST, 'id-ultima-questao-prev',FILTER_VALIDATE_INT);
         $nome_questionario = filter_input(INPUT_POST, 'nome-questionario',FILTER_SANITIZE_STRING);

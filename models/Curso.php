@@ -45,6 +45,21 @@ class Curso extends Model{
         $cursos = $this->pagination($pagina_atual);     
         return $cursos;
     }
+    public function getCursosPesquisa($texto){
+        $cursos = array();
+        
+        $sql = "SELECT * FROM cursos WHERE nome LIKE :nome";
+        
+        $sql = $this->db->prepare($sql);
+        $sql->bindValue(':nome','%'.$texto.'%');
+
+        $sql->execute();
+        if($sql->rowCount()){
+           $cursos = $sql->fetchAll(); 
+        }
+
+        return $cursos;
+    }
     public function getCursosDoAluno($id_aluno){
         $cursos = array();
         $sql = "SELECT m.id_curso as id,c.nome,c.imagem,c.descricao FROM matriculas  m LEFT JOIN cursos c ON m.id_curso = c.id "

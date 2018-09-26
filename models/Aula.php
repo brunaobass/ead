@@ -52,7 +52,6 @@ class Aula extends Model{
         $aulas = $this->where($campo, $condicao, $valores);
         foreach ($aulas as $aula_chave => $aula){
             $dados_aula = $a->getAula($aula['id']);
-            //if($dados_aula['tipo']==)
             $aulas[$aula_chave] = $dados_aula;          
         }
         

@@ -91,7 +91,6 @@ class aulasController extends Controller{
         $dados = array(
             'title'=> 'Editar aula',
             'css'  => 'curso',
-            //'modulos' => $modulo->getModulos($dados_aula['id_curso'])
         );
         if($dados_aula['tipo'] == 1){
             $view = 'editar_aula_video';
@@ -212,8 +211,7 @@ class aulasController extends Controller{
         
         $questionario->atualizar($id_questionario,$nome_questionario);
         $questionario_aula = $questionario->getQuestionarioAula('id', $id_questionario);
-        //echo 'ID Questionario:'.$id_questionario;
-        
+
         $_SESSION['success'] = 'Questionário atualizado com sucesso';
         header('Location:'.BASE_URL.'aulas/editar/'.$questionario_aula['id_aula']);
         exit;

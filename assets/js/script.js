@@ -1,20 +1,17 @@
 var url_base = 'http://localhost/ead/modulos/';
 var mouse_over = false;
 var locked = true;
+
 $(document).ready(function(){
     
-    //$('.form-edit-modulo').on('submit',editarModulo);
-    
     $('#btn-perfil').click(function(){
-        console.log('Efeito hover funcionando');
         $('.menu-logado').toggle(300);
     });
     $('#btn-show-menu').click(function(){
         $('.menu-navegacao').show(300);
         $('#btn-close-menu').show();
         $(this).hide();
-        console.log('Abriu menu');
-        
+      
     });
     $('#btn-close-menu').click(function(){
         $('.menu-navegacao').hide(300);
@@ -51,41 +48,24 @@ $(document).ready(function(){
 });
 function preencheCampoVazio(input){
     var alternativa = input.val();
-    console.log('Alternativa:'+alternativa);
     var noBlur = false;
+    
     input.on('blur',function(){
         if(!noBlur){
             noBlur = true;
-            console.log('Alternativa do BLur:'+alternativa);
-            if(input.val() == ''){
-                
+            if(input.val() == ''){                
                 input.val(alternativa) ;
-                console.log('Alternativa do vazio:'+alternativa);
-                console.log('\nVazio\n\n');
             }
-            console.log(input.val()); 
-        }
-        
+        }        
     });
 }
-function updateArea(){
-    var alturaTela = $(window).height();
-    var posY = $('.curso_left').offset().top;
-    var altura = alturaTela - posY;
-    
-    $('.curso_left, .curso_right').css('height',altura+'px');
-    
-    var ratio = 1920/1080;
-    var video_largura = $('#video').width();
-    var video_altura = video_largura / ratio;
-    $('#video').css('height',video_altura+'px');
-    
-}
+
 function concluirAula(obj){
     var id = $(obj).attr('data-id');
     marcarAssistido(id);
     $(obj).remove();
 }
+
 function marcarAssistido(id){
         
     $.ajax({
@@ -93,7 +73,6 @@ function marcarAssistido(id){
         type:'POST',
         data:{id:id},
         success:function(){
-            console.log('Marcar aula');
         }
     });    
 }
@@ -105,16 +84,10 @@ function desmarcarAssistido(id){
         type:'POST',
         data:{id:id},
         success:function(){
-            console.log('Desmarcar aula');
         }
     });    
 }
 $(function(){
-    if($('.curso_left').length){
-
-        //setInterval(updateArea,100);
-    }
-    
     $(".demo").starRating({
         totalStars:5,
         emptyColor: 'lightgray',
@@ -130,13 +103,13 @@ $(function(){
             alert("Rating: "+currentRating);
         }
 
-    });
-    
-    
+    });   
 });
+
 $('#btn-troca-foto').on('click',function(){
     $('#input-foto').trigger('click');
 });
+
 function trocaFoto(){
     if(typeof(FileReader) != "undefined"){
         var img_preview = $('#img_preview');      
@@ -153,14 +126,12 @@ function trocaFoto(){
 	}
 }
 
-
-
 function editarModulo(e){
   
   e.preventDefault();
   var dados = $(this).serialize(); 
-  console.log(dados.modulo);
   var url_base = 'http://localhost/ead/modulos/';
+  
   $.ajax({
       url:url_base+'editar',
       type:'POST',
@@ -172,9 +143,7 @@ function editarModulo(e){
       error: function (jqXHR, textStatus, errorThrown) {
            console.log("Erro: "+textStatus); 
       }
-  });
-  console.log(dados);
-  
+  }); 
 }
 function deleteModulo(obj){
     var id_modulo = $(obj).attr('data-modulo-id');
@@ -188,7 +157,7 @@ function deleteModulo(obj){
             listaModulos(json);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Deu ruim: "+errorThrown);
+            console.log("Erro encontrado: "+errorThrown);
         }
     });
 }
@@ -203,10 +172,9 @@ function deleteAula(obj){
         dataType:'json',
         success:function(json){
             listaAulas(json);
-            console.log('Aula deletada com sucesso...');
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Deu ruim: "+errorThrown);
+            console.log("Erro encontrado: "+errorThrown);
         }
     });
 }
@@ -253,9 +221,6 @@ function adicionarQuestao(obj){
     }
     
     $('input[name="id-ultima-questao"]').val(id_questao);
-    
-    console.log("ULTIMA QUESTAO: "+$('input[name="id-ultima-questao"]').val());
-    console.log("ID da nova questão: "+id_questao);
 }
 function editarQuestionario(obj){
 
@@ -316,7 +281,6 @@ function excluirQuestao(obj){
     var input = $(obj).parent().find('[type="text"]');
     
     var html = '<input type="hidden" name="id-delete'+id_questao+'" value="'+id_questao+'">';
-    console.log($(obj).parent());
     parent.append(html);
     parent.parent().hide();
     
@@ -346,7 +310,6 @@ function editarAlternativa(obj){
     input.blur(function(){
         if(!noBlur){
             noBlur = true;
-            console.log(alternativa.html());
             alternativa.html(input.val());
             
             alternativa.show();
@@ -372,7 +335,7 @@ function checkAula(obj){
         type:'POST',
         data:{id:id},
         success:function(resultado){
-            console.log(resultado);
+
             if(resultado){
                 desmarcarAssistido(id);
             }
@@ -409,7 +372,6 @@ function listaModulos(modulos){
     
     $('#lista-modulos').html('');
 
-    console.log("Tamanho: "+modulos.length);
     for(var i in modulos){
 
         $('#lista-modulos').append(
@@ -431,7 +393,7 @@ function listaModulos(modulos){
                     </form>\n\
                 </li>'
             );
-        console.log("Módulo: "+modulos[i].nome);
+
     }
     $('.form-edit-modulo').on('submit',editarModulo);
 }
@@ -439,8 +401,7 @@ function listaAulas(aulas){
     
     $('#lista-aulas'+aulas.id_modulo).html('');
     var url_base = 'http://localhost/ead/aulas/';
-    console.log("Tamanho: "+aulas.length);
-    console.log("Id Modulo: "+aulas.id_modulo);
+
     for(var i in aulas){
         $('#lista-aulas'+aulas.id_modulo).append(
                 '<li>\n\
@@ -451,13 +412,12 @@ function listaAulas(aulas){
                     </a>\n\
                 </li>'
             );
-        console.log("Aula: "+((aulas[i].tipo == 1) ? aulas[i].video.nome : aulas[i].questionario.nome));
     }
 }
 function editForm(obj){
     
     var id_modulo = $(obj).attr('data-modulo-id');
-    console.log('ID: '+id_modulo);
+
     if($('#editar'+id_modulo).css('display') == 'none'){
         $('#editar'+id_modulo).show();
     }

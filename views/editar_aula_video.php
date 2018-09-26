@@ -12,7 +12,7 @@
             <textarea  name="descricao"><?=(isset($video['id_aula']) ? $video['descricao']:'')?></textarea>      
         </div>
         <div class="form-group">
-            <label for="url">URL do vídeo</label>
+            <label for="url">URL do vídeo ( Vimeo )</label>
             <input type="text" name="url" value="<?=(isset($video['id_aula'])?$video['url']:'')?>">      
         </div>
 

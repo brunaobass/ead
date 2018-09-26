@@ -18,16 +18,23 @@ class cursosController extends Controller{
     public function index(){
 
         $pagina_atual = $this->getPaginaAtual();
+        
+        if($this->usuario->logado() && $this->usuario->getNivel($_SESSION['logado']) == 2){
+            header('Location:'.BASE_URL);
+            exit;
+        }
 
+        $cursos = $this->curso->getCursos($pagina_atual);
+        $view = 'cursos';
         $dados = [
             'title' => 'Cursos',
             'css'   => 'home',
             'titulo_principal' => 'Cursos',
-            'cursos' => $this->curso->getCursos($pagina_atual),
+            'cursos' => $cursos,
             'num_paginas' => $this->curso->getNumPaginas(),
             'logado' => $this->logado
         ];
-        $this->loadTemplate('cursos',$dados);
+        $this->loadTemplate($view,$dados);
     }
     /********************
      * CURSOS DO ALUNO
@@ -251,7 +258,6 @@ class cursosController extends Controller{
             'logado' => $this->logado
         );  
 
-        //$dados['logado'] = $this->logado;
         $dados['info'] = $this->usuario->getInfo();
         $this->loadTemplate('add_curso',$dados);        
     }
@@ -262,8 +268,6 @@ class cursosController extends Controller{
         if($this->usuario->getNivel($_SESSION['logado']) != 2){
             header('Location: '.BASE_URL);
         }
-        
-        //$this->curso->autorizaAcessoInstrutor($id);
         
         $this->curso->setCurso($id);
         $modulo = new Modulo();

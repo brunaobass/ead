@@ -95,8 +95,9 @@ class loginController extends Controller{
                     else{
                         $senha = password_hash($senha1,PASSWORD_BCRYPT);
                         $id = $usuario->inserirUsuario($nome,$username,$email,$nivel,$senha,$imagem);
-                        $_SESSION['success'] = 'Verifique o seu email para confirmar o cadastro em nossa plataforma';
-                        $this->enviaEmail($id,$email);
+                        //$_SESSION['success'] = 'Verifique o seu email para confirmar o cadastro em nossa plataforma';
+                        //$this->enviaEmail($id,$email);
+                        $_SESSION['logado'] = $id;
                         header("Location: ".BASE_URL);
                         exit;
                     }
@@ -133,11 +134,11 @@ class loginController extends Controller{
         
         $assunto = 'Confirmaçao de cadastro na plataforma EAD';
         $msg = "Clique no link abaixo para realizar a confirmação do seu cadastro na plataforma EAD \n\n".$link;
-        $header = "From: brunaobaixista@gmail.com\r\n"
+        $header = "From: bruno_emanuel87@hotmail.com\r\n"
                 . "X-Mailer:PHP/". phpversion();
         
         mail($email, $assunto, $msg, $header);
-        echo $link;
+        //echo $link;
         exit;
     }
 }

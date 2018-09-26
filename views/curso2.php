@@ -39,7 +39,7 @@
     </section>
     <section class="inscrever">
         <h3>Video de demonstração</h3>
-        <img src="<?=BASE_URL.'assets/images/cursos/'.$curso["imagem"]?>">
+        <img src="<?=BASE_URL.'assets/images/cursos/'.$curso["imagem"]?>" alt="<?=$curso['nome']?>">
         <a href="<?=BASE_URL.'cursos/inscrever/'.$curso['id']?>" class="btn btn-primary">Inscrever</a>
 
     </section>

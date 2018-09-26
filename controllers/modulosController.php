@@ -26,16 +26,13 @@ class modulosController extends Controller{
         else{
             $_SESSION['erro'] = 'Digite o módulo antes de adicionar!';
         }
-        //$modulos = $this->modulo->getModulos($id_curso);
-        
-        //echo json_encode($modulos);
+
         header('Location:'.BASE_URL.'cursos/atualizar/'.$id_curso);
         exit;
     }
 
     public function deletar(){
-        //echo "Deletando módulo:".$id;
-        
+
         $id = filter_input(INPUT_POST, 'id',FILTER_VALIDATE_INT);
         $modulo = $this->modulo->getModulo($id);
         $id_curso = $modulo['id_curso'];

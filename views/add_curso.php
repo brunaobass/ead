@@ -138,8 +138,6 @@
                 <ul class="lista-aulas" id="lista-aulas<?=$modulo['id']?>">
                     <?php
                         foreach ($modulo['aulas'] as $aula):
-                            //var_dump($aula);
-                            //exit;
                     ?>
                     <li class="container-li">
                         <span class="nome"><?=(($aula['tipo'] == 1 ) ? $aula['video']['nome'] : $aula['questionario']['nome']  )?></span>

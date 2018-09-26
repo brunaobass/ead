@@ -32,15 +32,6 @@ class Comentario extends Model{
                 . 'WHERE id_video =  '.$id_video.' ORDER BY data_duvida DESC';
         
         $comentarios = $this->query($sql);
-        /*$comentarios = $this->where(
-                ['*'], 
-                ['id_video'], 
-                [$id_video]
-            );
-        foreach($comentarios as $key=>$comentario){
-            $comentarios[$key]['autor'] = $this->getAutor($comentario['id_aluno']);
-        }*/
-
         return $comentarios;
     }
     

@@ -2,7 +2,7 @@
 <section class="cursos-container">
     <?php
         require 'alerts.php';
-        if($usuario['nivel'] == 2):
+        if(isset($usuario) && $usuario['nivel'] == 2):
             $action = 'atualizar';
     ?>
         <div>           

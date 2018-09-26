@@ -135,8 +135,8 @@ class Model{
     }
     private function getSET($campo){
         $num_campos = count($campo);
-        //UPDATE tabela SET campo1=valor1,campo2=valor2
         $query = '';
+        
         for($i=0;$i< $num_campos;$i++){
             $query.=$campo[$i].' = :'.$campo[$i];
             if($i<($num_campos-1)){

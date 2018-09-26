@@ -64,7 +64,7 @@ class Usuario extends Model{
 
     public function inserirUsuario($nome,$username,$email,$nivel,$senha,$imagem){
             $sql = "INSERT INTO usuarios (nome,username,email,nivel,senha,imagem,status) "
-                    . "VALUES (:nome,:username,:email,:nivel,:senha,:imagem,0)";
+                    . "VALUES (:nome,:username,:email,:nivel,:senha,:imagem,1)";
 
             $sql = $this->db->prepare($sql);
 
